@@ -1,0 +1,53 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":dependencyDashboard"
+  ],
+  "enabledManagers": [
+    "terraform"
+  ],
+  "terraform": {
+    "ignorePaths": [
+      "**/test/**"
+    ]
+  },
+
+  "packageRules": [
+    {
+      "matchManagers": ["terraform"],
+      "matchDepTypes": ["provider"],
+      "rangeStrategy": "bump"
+    },
+    {
+      "matchManagers": ["terraform"],
+      "matchDepTypes": ["module"],
+      "rangeStrategy": "bump"
+    },
+    {
+      "matchPackagePatterns": ["terraform-aws-modules"],
+      "automerge": false,
+      "reviewersFromCodeOwners": true
+    }
+  ],
+  "prHourlyLimit": 3,
+  "prConcurrentLimit": 5,
+  "separateMinorPatch": true,
+  "separateMajorMinor": true,
+  "schedule": [
+    "before 9am on monday"
+  ],
+  "labels": [
+    "dependencies",
+    "renovate"
+  ],
+  "assignees": [],
+  "reviewers": [],
+  "commitMessagePrefix": "chore(deps):",
+  "commitMessageAction": "update",
+  "commitMessageTopic": "{{depName}}",
+  "commitMessageExtra": "to {{newVersion}}",
+  "branchPrefix": "renovate/",
+  "baseBranches": ["master"],
+  "platformAutomerge": false
+}
