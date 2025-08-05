@@ -1,5 +1,5 @@
 variable "name_prefix" {
-  description = "Name prefix for security groups"
+  description = "Name prefix for security groups (enhanced in v1.0.1)"
   type        = string
 }
 

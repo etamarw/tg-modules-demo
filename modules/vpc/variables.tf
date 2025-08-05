@@ -1,5 +1,5 @@
 variable "name" {
-  description = "Name to be used on all the resources as identifier"
+  description = "Name to be used on all the resources as identifier (updated in v1.0.1)"
   type        = string
 }
 
