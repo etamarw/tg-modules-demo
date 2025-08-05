@@ -1,0 +1,17 @@
+# CODEOWNERS file
+# This file defines who are the default owners for files in this repository
+# Users or teams mentioned here will be automatically requested for review
+# when someone opens a pull request.
+
+# Global rule: Etamar Weinberg owns everything unless a later rule takes precedence
+* @etamarw
+
+# Module-specific rules
+/modules/ @etamarw
+
+# Renovate configuration should be reviewed carefully
+/renovate.json @etamarw
+/.github/workflows/renovate.yml @etamarw
+
+# Documentation changes
+/README.md @etamarw
