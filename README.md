@@ -10,9 +10,8 @@ tg-modules-demo/
 │   ├── vpc/                   # VPC module with standard networking setup
 │   └── security-groups/       # Security groups module with 3-tier architecture
 ├── .github/
-│   └── workflows/
-│       └── renovate.yml      # GitHub Actions workflow for Renovate (for this repo)
-└── renovate.json             # Renovate configuration (for this repo)
+│   └── CODEOWNERS            # Code ownership and review requirements
+└── renovate.json             # Renovate app configuration
 ```
 
 ## Modules
@@ -33,15 +32,21 @@ tg-modules-demo/
 
 ## Renovate Integration
 
-This repository has Renovate configured to monitor dependencies in the modules themselves (provider versions, upstream module versions). However, the main Renovate workflow will be in your **live repository** where:
+This repository uses the **Renovate GitHub App** for automated dependency management. The main Renovate workflow will be in your **live repository** where:
 
 - Renovate monitors this modules repository for new releases/tags
-- Creates PRs in the live repo when module versions should be updated
+- Creates PRs in the live repo when module versions should be updated  
 - Manages the actual infrastructure deployment dependencies
+
+### Renovate App Setup
+
+1. **Install the Renovate GitHub App** on your repository from: https://github.com/apps/renovate
+2. **Configure the app** to run on this repository  
+3. **The `renovate.json` configuration** will automatically be detected and used
 
 ### Renovate in This Modules Repository
 
-The included Renovate configuration (`renovate.json` and `.github/workflows/renovate.yml`) will:
+The included Renovate configuration (`renovate.json`) will:
 - Monitor Terraform provider versions in module `versions.tf` files
 - Monitor upstream Terraform module versions in module `main.tf` files
 - Create PRs to update module dependencies
@@ -69,12 +74,12 @@ To use these modules in your live Terragrunt repository:
    ```hcl
    # In your live repo: live/dev/us-west-2/vpc/terragrunt.hcl
    terraform {
-     source = "git::https://github.com/your-org/tg-modules-demo.git//modules/vpc?ref=v1.0.0"
+     source = "git::https://github.com/etamarw/tg-modules-demo.git//modules/vpc?ref=v1.0.0"
    }
    
    # In your live repo: live/dev/us-west-2/security-groups/terragrunt.hcl
    terraform {
-     source = "git::https://github.com/your-org/tg-modules-demo.git//modules/security-groups?ref=v1.0.0"
+     source = "git::https://github.com/etamarw/tg-modules-demo.git//modules/security-groups?ref=v1.0.0"
    }
    ```
 
