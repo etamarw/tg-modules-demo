@@ -1,5 +1,5 @@
 output "vpc_id" {
-  description = "ID of the VPC"
+  description = "ID of the VPC (enhanced output in v1.1.0)"
   value       = module.vpc.vpc_id
 }
 

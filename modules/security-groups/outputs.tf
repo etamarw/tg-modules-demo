@@ -1,5 +1,5 @@
 output "web_security_group_id" {
-  description = "ID of the web security group"
+  description = "ID of the web security group (improved output in v1.1.0)"
   value       = module.web_security_group.security_group_id
 }
 
