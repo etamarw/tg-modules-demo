@@ -1,6 +1,6 @@
 module "web_security_group" {
   source = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.1"
+  version = "~> 5.3"
 
   name        = "${var.name_prefix}-web"
   description = "Security group for web tier"
@@ -18,7 +18,7 @@ module "web_security_group" {
 
 module "app_security_group" {
   source = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.1"
+  version = "~> 5.3"
 
   name        = "${var.name_prefix}-app"
   description = "Security group for application tier"
@@ -42,7 +42,7 @@ module "app_security_group" {
 
 module "db_security_group" {
   source = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.1"
+  version = "~> 5.3"
 
   name        = "${var.name_prefix}-db"
   description = "Security group for database tier"
